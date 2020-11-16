@@ -33,8 +33,27 @@ function astronomyInZipCode(date, zipCode) {
         });
 }
 
+//This function takes in a date and zipcode and returns the weather in that location, 
+    //even if the date is from the past
+//The date variable should be a string in the format "yyyy-mm-dd";
+function weatherHistoryInZipCode(date, zipCode) {
+    fetch(`http://api.weatherapi.com/v1/history.json?key=${apiKey}&q=${zipCode}&dt=${date}`)
+        .then(function (resp) {
+            return resp.json()
+        }) // Convert data to json
+        .then(function (data) {
+            console.log(data);
+        })
+        .catch(function () {
+            console.log("Error: I don't know what happened");
+        });
+}
+
+
 window.onload = function () {
     weatherInZipCode(76067);
     //The date variable should be a string in the format "yyyy-mm-dd";
     astronomyInZipCode('2020-11-11', 84102);
+    //The date variable should be a string in the format "yyyy-mm-dd";
+    weatherHistoryInZipCode('2020-11-11', 84102);
 }
