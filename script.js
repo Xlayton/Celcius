@@ -1,8 +1,17 @@
-fetch("http://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=20ba8aef150a4b599827f02a43125c32")
-    .then(res => res.json())
-    .then(data => console.log(data))
-
 const apiKey = "9e31f156020b4909b6b171432201111";
+const newsStories = []
+
+function getNews() {
+    fetch("http://newsapi.org/v2/top-headlines?country=us&q=weather&apiKey=20ba8aef150a4b599827f02a43125c32")
+        .then(res => res.json())
+        .then(data => {
+            newsStories.push(...data.articles)
+        })
+    // fetch("http://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=20ba8aef150a4b599827f02a43125c32")
+    //     .then(res => res.json())
+    //     .then(data => console.log(data))
+}
+getNews()
 
 //This function takes in a zipcode and returns the weather in that location
 function weatherInZipCode(zipCode) {
