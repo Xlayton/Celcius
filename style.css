@@ -27,19 +27,30 @@ body {
     flex-direction: row;
     justify-content: space-evenly;
     width: 75%;
+    margin-bottom: 10vh;
 }
 
-#day1 {
-    height: 25vh;
-    width: 20vh;
+.bottomPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 75%;
 }
 
-#day2 {
+/* Current weather for the next 3 days */
+.currentDay {
     height: 25vh;
     width: 20vh;
+    background-color: #ccc;
 }
 
-#day3 {
-    height: 25vh;
-    width: 20vh;
+/* Weather history for the last 7 days */
+.previousDay {
+    height: 20vh;
+    width: 15vh;
+    background-color: #aaa;
+}
+
+.previousDay > h3{
+    color: #eee;
 }
