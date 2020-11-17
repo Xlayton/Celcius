@@ -1,6 +1,15 @@
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     margin: 0;
+    text-align: center;
+}
+
+.flexContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
 }
 
 .header {
@@ -11,4 +20,26 @@ body {
     color: #fff;
     background-color: #29abe2;
     width: 100%;
+}
+
+.midPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 75%;
+}
+
+#day1 {
+    height: 25vh;
+    width: 20vh;
+}
+
+#day2 {
+    height: 25vh;
+    width: 20vh;
+}
+
+#day3 {
+    height: 25vh;
+    width: 20vh;
 }

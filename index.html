@@ -5,39 +5,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="/favicon.ico" rel="icon" type="image/x-icon" />
     <link rel="stylesheet" href="/style.css"/>
 </head>
 
 <body>
-    <div class="topPage">
-        <div class="header">
-            <h1>Celsius</h1>
-            <p>Your wonderful weather wesbsite!</p>
-        </div>
-        <div class="dateTime">
-            Date: <p id="currentTime"></p>
-        </div>
-        <div class="currentWeather">
-
-        </div>
+    <div class="header">
+        <h1>Celsius</h1>
+        <p>Your wonderful weather wesbsite!</p>
     </div>
-    <div class="midPage">
-        <h2>Day 1</h2>
-        <div class="day1">
-
+    <div class="flexContainer">
+        <div class="topPage">
+            <div id="dateTime">
+                Date: <p id="currentTime"></p>
+            </div>
+            <div id="currentWeather">
+    
+            </div>
         </div>
-        <h2>Day  2</h2>
-        <div class="day2">
-
+        <div class="midPage">
+            <div id="day1">
+                <h2>Day 1</h2>
+    
+            </div>
+            <div id="day2">
+                <h2>Day  2</h2>
+    
+            </div>
+            <div id="day3">
+                <h2>Day 3</h2>
+    
+            </div>
         </div>
-        <h2>Day 3</h2>
-        <div class="day3">
-
+        <!-- BOTTOM may wanna put the previous 7 days of data -->
+        <div class="bottomPage">
+    
         </div>
-    </div>
-    <!-- BOTTOM may wanna put the previous 7 days of data -->
-    <div class="bottomPage">
-
     </div>
 
     <footer>
