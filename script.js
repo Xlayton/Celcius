@@ -71,12 +71,29 @@ function weatherHistoryInZipCode(date, zipCode) {
         });
 }
 
+//This function takes in a number of days (Max of 3) and zipcode and returns the weather in that location over the time period set
+function weatherForecastInZipCode(days, zipCode) {
+    // http://api.weatherapi.com/v1/forecast.json?key=9e31f156020b4909b6b171432201111&q=84102&days=3
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${zipCode}&days=${days}`)
+        .then(function (resp) {
+            return resp.json()
+        }) // Convert data to json
+        .then(function (data) {
+            console.log(data);
+        })
+        .catch(function () {
+            console.log("Error: I don't know what happened");
+        });
+}
+
 
 window.onload = function () {
     getNews()
     weatherInZipCode(76067);
-    //The date variable should be a string in the format "yyyy-mm-dd";
+    //The date variable should be a string in the format "yyyy-mm-dd"
     astronomyInZipCode('2020-11-11', 84102);
-    //The date variable should be a string in the format "yyyy-mm-dd";
+    //The date variable should be a string in the format "yyyy-mm-dd"
     weatherHistoryInZipCode('2020-11-11', 84102);
+    //Takes in number of days and zipcode
+    weatherForecastInZipCode(3, 84102);
 }
