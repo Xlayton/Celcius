@@ -39,6 +39,8 @@ function weatherInLocation(location) {
         }) // Convert data to json
         .then(function (data) {
             console.log(data);
+            let currentWeatherType = document.getElementById("currentWeatherType");
+            currentWeatherType.innerText = data.current.condition.text;
         })
         .catch(function () {
             console.log("Error: I don't know what happened");
@@ -53,6 +55,8 @@ function astronomyInLocation(date, location) {
             return resp.json()
         }) // Convert data to json
         .then(function (data) {
+            // let sunRise = document.getElementById("sunRise");
+            // sunRise.innerHTML = data.astronomy.astro.sunrise;
             console.log(data);
         })
         .catch(function () {
@@ -83,8 +87,59 @@ function weatherForecastInLocation(days, location) {
             return resp.json()
         }) // Convert data to json
         .then(function (data) {
+            let reg = /[0-9]{2}(?=:[0-9]{2})/;
+            let time = `${parseInt(getTime()) + 1}`;
+            let counter = 0;
+
+            //Top of the page content and hourly cast
             let currentCity = document.getElementById("currentCity");
             currentCity.innerText = data.location.name;
+            let currentTemp = document.getElementById("currentTemp");
+            currentTemp.innerHTML = `${data.current.temp_f}&deg;F`;
+            let weatherIcon = document.getElementById("weatherIcon");
+            weatherIcon.src = data.current.condition.icon;
+            let currentHigh = document.getElementById("currentHigh");
+            currentHigh.innerHTML = `High: ${data.forecast.forecastday[0].day.maxtemp_f}&deg;F&nbsp;`;
+            let currentLow = document.getElementById("currentLow");
+            currentLow.innerHTML = `Low: ${data.forecast.forecastday[0].day.mintemp_f}&deg;F`;
+            document.getElementById(`currentHour`).innerHTML = `
+                        <p>Now</p>
+                        <p>${data.current.temp_f}&deg;F</p>
+                    `;
+            for (let hour of data.forecast.forecastday[0].hour) {
+                if (hour.time.match(reg)[0] === time) {
+                    document.getElementById(`hour${counter}`).innerHTML = `
+                        <p>${time === 12 ? time : time - 12}:00</p>
+                        <p>${hour.temp_f}&deg;F</p>
+                    `;
+                    counter++;
+                    if(counter > 6) break;
+                    time = `${parseInt(time) + 1}`;
+                }
+            }
+
+            //day forecast
+            //day 1
+            let day1High = document.getElementById("day1High");
+            day1High.innerHTML = `${data.forecast.forecastday[0].day.maxtemp_f}&deg;F`;
+            let day1Low = document.getElementById("day1Low");
+            day1Low.innerHTML = `${data.forecast.forecastday[0].day.mintemp_f}&deg;F`;
+            let possibleConditionDay1 = document.getElementById("possibleConditionDay1");
+            possibleConditionDay1.innerHTML = `${data.forecast.forecastday[0].day.condition.text}`;
+            //day 2
+            let day2High = document.getElementById("day2High");
+            day2High.innerHTML = `${data.forecast.forecastday[1].day.maxtemp_f}&deg;F`;
+            let day2Low = document.getElementById("day2Low");
+            day2Low.innerHTML = `${data.forecast.forecastday[1].day.mintemp_f}&deg;F`;
+            let possibleConditionDay2 = document.getElementById("possibleConditionDay2");
+            possibleConditionDay2.innerHTML = `${data.forecast.forecastday[1].day.condition.text}`;
+            //day 3
+            let day3High = document.getElementById("day3High");
+            day3High.innerHTML = `${data.forecast.forecastday[2].day.maxtemp_f}&deg;F`;
+            let day3Low = document.getElementById("day3Low");
+            day3Low.innerHTML = `${data.forecast.forecastday[2].day.mintemp_f}&deg;F`;
+            let possibleConditionDay3 = document.getElementById("possibleConditionDay3");
+            possibleConditionDay3.innerHTML = `${data.forecast.forecastday[2].day.condition.text}`;
             console.log(data);
         })
         .catch(function () {
@@ -92,7 +147,7 @@ function weatherForecastInLocation(days, location) {
         });
 }
 
-updateZipCode = () => {  
+updateZipCode = () => {
     var zipInput = document.getElementById('zipInput').value;
     console.log(zipInput);
     weatherInZipCode(zipInput);
@@ -111,7 +166,14 @@ window.onload = function () {
     //The date variable should be a string in the format "yyyy-mm-dd"
     astronomyInLocation('2020-11-11', "Dallas");
     //The date variable should be a string in the format "yyyy-mm-dd"
-    weatherHistoryInLocation('2020-11-11', 84102);
+    //Not being used
+    // weatherHistoryInLocation('2020-11-11', 84102);
     //Takes in number of days and zipcode
     weatherForecastInLocation(3, 'Salt Lake City');
+}
+
+function getTime() {
+    let reg = /[0-9]{2}(?=:[0-9]{2})/;
+    let time = new Date();
+    return time.toTimeString().match(reg)[0];
 }

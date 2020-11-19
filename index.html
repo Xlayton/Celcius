@@ -6,61 +6,66 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
     <div class="header">
         <h1>CELSIUS</h1>
-        <p>Your wonderful weather wesbsite!</p>
+        <p>Enter your zip code</p>
+        <div class="inputBox">
+            <input type="number" min="11111" max="99999" id="zipInput" />
+            <button onclick="updateZipCode()">Search</button>
+        </div>
     </div>
     <div class="flexContainer">
         <div class="topPage">
-            <div class="inputBox">
-                <input type="number" min="11111" max="99999" id="zipInput" />
-                <button onclick="updateZipCode()">Search</button>
-            </div>
             <div id="dateTime">
                 <h1>Date: <p id="currentTime"></p></h1>
+                <!-- <h4>The sun came up at <p id="sunRise"></p></h4> -->
             </div>
             <div id="currentWeather">
                 <h2 id="currentCity">Current City</h2>
-                <h3>Current Weather</h3>
-                <h1>XX&deg;</h1>
-                <h4>High: XX&deg; Low: XX&deg;</h4>
+                <h3 id="currentWeatherType">Current Weather</h3>
+                <img id="weatherIcon">
+                <h1 id="currentTemp">XX</h1>
+                <div class="row">
+                    <h4 id="currentHigh">High: XX&deg;</h4>
+                    <h4 id="currentLow">Low: XX&deg;</h4>
+                </div>
             </div>
             <div class="hourlyWeather">
                 <div class="hourly">
-                    <h3>Now</h3>
-        
+                    <h3 id="currentHour">Now</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour0">Next Hour</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour1">Next Hour</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour2">Next Hour</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour3">Next Hour</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour4">Next Hour</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour5">Next Hour</h3>
+
                 </div>
                 <div class="hourly">
-                    <h3>Next Hour</h3>
-        
+                    <h3 id="hour6">Next Hour</h3>
+
                 </div>
             </div>
         </div>
@@ -70,20 +75,26 @@
         <div class="midPage">
             <div id="day1" class="currentDay">
                 <h2>Day 1</h2>
-    
+                <h3 id="day1High"></h3>
+                <h4 id="day1Low"></h4>
+                <p><p id="possibleConditionDay1"></p></p>
             </div>
             <div id="day2" class="currentDay">
                 <h2>Day 2</h2>
-    
+                <h3 id="day2High"></h3>
+                <h4 id="day2Low"></h4>
+                <p><p id="possibleConditionDay2"></p></p>
             </div>
             <div id="day3" class="currentDay">
                 <h2>Day 3</h2>
-    
+                <h3 id="day3High"></h3>
+                <h4 id="day3Low"></h4>
+                <p><p id="possibleConditionDay3"></p></p>
             </div>
         </div>
         <!-- BOTTOM may wanna put the previous 7 days of data -->
         <div class="bottomPage">
-            
+
         </div>
     </div>
 
