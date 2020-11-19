@@ -83,6 +83,8 @@ function weatherForecastInLocation(days, location) {
             return resp.json()
         }) // Convert data to json
         .then(function (data) {
+            let currentCity = document.getElementById("currentCity");
+            currentCity.innerText = data.location.name;
             console.log(data);
         })
         .catch(function () {
