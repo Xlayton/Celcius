@@ -7,12 +7,14 @@ function getNews(numOfStories = 10) {
     fetch("http://newsapi.org/v2/top-headlines?country=us&q=weather&apiKey=20ba8aef150a4b599827f02a43125c32")
         .then(res => res.json())
         .then(data => {
+            console.log(1, data)
             newsStories.push(...data.articles)
             if (newsStories.length < 10) {
                 fetch("http://newsapi.org/v2/top-headlines?country=us&category=science&apiKey=20ba8aef150a4b599827f02a43125c32")
                     .then(res => res.json())
                     .then(data => {
-                        let fillerStories = data.articles.slice(newsStories.length - 1, numOfStories - 1)
+                        console.log(2, data)
+                        let fillerStories = data.articles.slice(newsStories.length > 0 ? newsStories.length - 1 : newsStories.length, newsStories.length > 0 ? numOfStories - 1 : numOfStories)
                         newsStories.push(...fillerStories)
                         updateNewsArticles()
                     })
