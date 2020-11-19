@@ -28,8 +28,12 @@ function updateNewsArticles() {
     console.log("Image it was loading HTML on the screen. Can you see it? Beautiful", newsStories)
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//Location refers to US Zipcode, UK Postcode, Canada Postalcode, IP address, Latitude/Longitude (decimal degree) or city name.
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 //This function takes in a zipcode and returns the weather in that location
-function weatherInZipCode(location) {
+function weatherInLocation(location) {
     fetch(`https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`)
         .then(function (resp) {
             return resp.json()
@@ -44,7 +48,7 @@ function weatherInZipCode(location) {
 
 //This function takes in a date and zipcode and returns the astonomy in that location
 //The date variable should be a string in the format "yyyy-mm-dd";
-function astronomyInZipCode(date, location) {
+function astronomyInLocation(date, location) {
     fetch(`https://api.weatherapi.com/v1/astronomy.json?key=${apiKey}&q=${location}&dt=${date}`)
         .then(function (resp) {
             return resp.json()
@@ -60,7 +64,7 @@ function astronomyInZipCode(date, location) {
 //This function takes in a date and zipcode and returns the weather in that location, 
 //even if the date is from the past
 //The date variable should be a string in the format "yyyy-mm-dd";
-function weatherHistoryInZipCode(date, location) {
+function weatherHistoryInLocation(date, location) {
     fetch(`http://api.weatherapi.com/v1/history.json?key=${apiKey}&q=${location}&dt=${date}`)
         .then(function (resp) {
             return resp.json()
@@ -74,7 +78,7 @@ function weatherHistoryInZipCode(date, location) {
 }
 
 //This function takes in a number of days (Max of 3) and zipcode and returns the weather in that location over the time period set
-function weatherForecastInZipCode(days, location) {
+function weatherForecastInLocation(days, location) {
     // http://api.weatherapi.com/v1/forecast.json?key=9e31f156020b4909b6b171432201111&q=84102&days=3
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=${apiKey}&q=${location}&days=${days}`)
         .then(function (resp) {
@@ -90,23 +94,23 @@ function weatherForecastInZipCode(days, location) {
 
 updateZipCode = () => {  
     var zipCode = document.getElementById('zipInput').value;
-    weatherInZipCode(zipCode);
+    weatherInLocation(zipCode);
     //The date variable should be a string in the format "yyyy-mm-dd"
-    astronomyInZipCode('2020-11-11', zipCode);
+    astronomyInLocation('2020-11-11', zipCode);
     //The date variable should be a string in the format "yyyy-mm-dd"
-    weatherHistoryInZipCode('2020-11-11', zipCode);
+    weatherHistoryInLocation('2020-11-11', zipCode);
     //Takes in number of days and zipcode
-    weatherForecastInZipCode(3, zipCode);
+    weatherForecastInLocation(3, zipCode);
 }
 
 
 window.onload = function () {
     getNews()
-    weatherInZipCode(76067);
+    weatherInLocation(76067);
     //The date variable should be a string in the format "yyyy-mm-dd"
-    astronomyInZipCode('2020-11-11', 84102);
+    astronomyInLocation('2020-11-11', 84102);
     //The date variable should be a string in the format "yyyy-mm-dd"
-    weatherHistoryInZipCode('2020-11-11', 84102);
+    weatherHistoryInLocation('2020-11-11', 84102);
     //Takes in number of days and zipcode
-    weatherForecastInZipCode(3, 84102);
+    weatherForecastInLocation(3, 84102);
 }
