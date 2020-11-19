@@ -92,6 +92,18 @@ function weatherForecastInLocation(days, location) {
         });
 }
 
+updateZipCode = () => {  
+    var zipInput = document.getElementById('zipInput').value;
+    console.log(zipInput);
+    weatherInZipCode(zipInput);
+    //The date variable should be a string in the format "yyyy-mm-dd"
+    astronomyInZipCode('2020-11-11', zipInput);
+    //The date variable should be a string in the format "yyyy-mm-dd"
+    weatherHistoryInZipCode('2020-11-11', zipInput);
+    //Takes in number of days and zipcode
+    weatherForecastInZipCode(3, zipInput);
+}
+
 
 window.onload = function () {
     getNews()
