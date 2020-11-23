@@ -150,13 +150,8 @@ function weatherForecastInLocation(days, location) {
 }
 
 updateZipCode = () => {
-    var zipInput = document.getElementById('zipInput').value;
-    console.log(zipInput);
-    weatherInZipCode(zipInput);
-    //The date variable should be a string in the format "yyyy-mm-dd"
-    astronomyInLocation('2020-11-11', zipCode);
-    //The date variable should be a string in the format "yyyy-mm-dd"
-    weatherHistoryInLocation('2020-11-11', zipCode);
+    var zipCode = document.getElementById('zipInput').value;
+    console.log(zipCode);
     //Takes in number of days and zipcode
     weatherForecastInLocation(3, zipCode);
 }
