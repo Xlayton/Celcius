@@ -60,7 +60,7 @@ h1 {
 /* Current weather for the next 3 days */
 
 .currentDay {
-    height: 25vh;
+    height: 28vh;
     width: 20vh;
     border: solid #333;
     border-radius: 8px;
@@ -71,7 +71,7 @@ h1 {
 .hourly {
     height: 15vh;
     width: 10vh;
-    border: solid #aaa;
+    border: solid rgb(105, 105, 105);
     border-radius: 8px;
 }
 

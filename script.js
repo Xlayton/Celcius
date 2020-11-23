@@ -94,6 +94,8 @@ function weatherForecastInLocation(days, location) {
             let counter = 0;
 
             //Top of the page content and hourly cast
+            let currentDate = document.getElementById("currentTime");
+            currentDate.innerText = `Date: ${data.current.last_updated}`;
             let currentCity = document.getElementById("currentCity");
             currentCity.innerText = data.location.name;
             let currentTemp = document.getElementById("currentTemp");
@@ -106,12 +108,14 @@ function weatherForecastInLocation(days, location) {
             currentLow.innerHTML = `Low: ${data.forecast.forecastday[0].day.mintemp_f}&deg;F`;
             document.getElementById(`currentHour`).innerHTML = `
                         <p>Now</p>
+                        <img id="weatherIcon" src="${data.current.condition.icon}">
                         <p>${data.current.temp_f}&deg;F</p>
                     `;
             for (let hour of data.forecast.forecastday[0].hour) {
                 if (hour.time.match(reg)[0] === time) {
                     document.getElementById(`hour${counter}`).innerHTML = `
                         <p>${time === 12 ? time : time - 12}:00</p>
+                        <img id="weatherIcon" src="${hour.condition.icon}">
                         <p>${hour.temp_f}&deg;F</p>
                     `;
                     counter++;
@@ -125,29 +129,35 @@ function weatherForecastInLocation(days, location) {
             let day1Date = document.getElementById("day1Date");
             day1Date.innerHTML = data.forecast.forecastday[0].date;
             let day1High = document.getElementById("day1High");
-            day1High.innerHTML = `${data.forecast.forecastday[0].day.maxtemp_f}&deg;F`;
+            day1High.innerHTML = `H: ${data.forecast.forecastday[0].day.maxtemp_f}&deg;F`;
             let day1Low = document.getElementById("day1Low");
-            day1Low.innerHTML = `${data.forecast.forecastday[0].day.mintemp_f}&deg;F`;
+            day1Low.innerHTML = `L: ${data.forecast.forecastday[0].day.mintemp_f}&deg;F`;
             let possibleConditionDay1 = document.getElementById("possibleConditionDay1");
             possibleConditionDay1.innerHTML = `${data.forecast.forecastday[0].day.condition.text}`;
+            document.getElementById("forecast1Icon").innerHTML = `<img id="weatherIcon" src="${data.forecast.forecastday[0].day.condition.icon}">`;
+            
             //day 2
             let day2Date = document.getElementById("day2Date");
             day2Date.innerHTML = data.forecast.forecastday[1].date;
             let day2High = document.getElementById("day2High");
-            day2High.innerHTML = `${data.forecast.forecastday[1].day.maxtemp_f}&deg;F`;
+            day2High.innerHTML = `H: ${data.forecast.forecastday[1].day.maxtemp_f}&deg;F`;
             let day2Low = document.getElementById("day2Low");
-            day2Low.innerHTML = `${data.forecast.forecastday[1].day.mintemp_f}&deg;F`;
+            day2Low.innerHTML = `L: ${data.forecast.forecastday[1].day.mintemp_f}&deg;F`;
             let possibleConditionDay2 = document.getElementById("possibleConditionDay2");
             possibleConditionDay2.innerHTML = `${data.forecast.forecastday[1].day.condition.text}`;
+            document.getElementById("forecast2Icon").innerHTML = `<img id="weatherIcon" src="${data.forecast.forecastday[1].day.condition.icon}">`;
+
             //day 3
             let day3Date = document.getElementById("day3Date");
             day3Date.innerHTML = data.forecast.forecastday[2].date;
             let day3High = document.getElementById("day3High");
-            day3High.innerHTML = `${data.forecast.forecastday[2].day.maxtemp_f}&deg;F`;
+            day3High.innerHTML = `H: ${data.forecast.forecastday[2].day.maxtemp_f}&deg;F`;
             let day3Low = document.getElementById("day3Low");
-            day3Low.innerHTML = `${data.forecast.forecastday[2].day.mintemp_f}&deg;F`;
+            day3Low.innerHTML = `L: ${data.forecast.forecastday[2].day.mintemp_f}&deg;F`;
             let possibleConditionDay3 = document.getElementById("possibleConditionDay3");
             possibleConditionDay3.innerHTML = `${data.forecast.forecastday[2].day.condition.text}`;
+            document.getElementById("forecast3Icon").innerHTML = `<img id="weatherIcon" src="${data.forecast.forecastday[2].day.condition.icon}">`;
+
             console.log(data);
         })
         .catch(function () {
@@ -158,6 +168,7 @@ function weatherForecastInLocation(days, location) {
 updateZipCode = () => {
     var zipCode = document.getElementById('zipInput').value;
     console.log(zipCode);
+    weatherInLocation(zipCode);
     //Takes in number of days and zipcode
     weatherForecastInLocation(3, zipCode);
 }
