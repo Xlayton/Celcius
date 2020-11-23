@@ -12,6 +12,10 @@
 <body>
     <div class="header">
         <h1>CELSIUS</h1>
+        <nav>
+            <a href="index.html">Weather</a>
+            <a href="news.html">News</a>
+        </nav>
         <p>Enter your zip code</p>
         <div class="inputBox">
             <input type="number" min="11111" max="99999" id="zipInput" />
@@ -21,7 +25,8 @@
     <div class="flexContainer">
         <div class="topPage">
             <div id="dateTime">
-                <h1>Date: <p id="currentTime"></p></h1>
+                <h1>Date: <p id="currentTime"></p>
+                </h1>
                 <!-- <h4>The sun came up at <p id="sunRise"></p></h4> -->
             </div>
             <div id="currentWeather">
@@ -77,19 +82,25 @@
                 <h2>Day 1</h2>
                 <h3 id="day1High"></h3>
                 <h4 id="day1Low"></h4>
-                <p><p id="possibleConditionDay1"></p></p>
+                <p>
+                    <p id="possibleConditionDay1"></p>
+                </p>
             </div>
             <div id="day2" class="currentDay">
                 <h2>Day 2</h2>
                 <h3 id="day2High"></h3>
                 <h4 id="day2Low"></h4>
-                <p><p id="possibleConditionDay2"></p></p>
+                <p>
+                    <p id="possibleConditionDay2"></p>
+                </p>
             </div>
             <div id="day3" class="currentDay">
                 <h2>Day 3</h2>
                 <h3 id="day3High"></h3>
                 <h4 id="day3Low"></h4>
-                <p><p id="possibleConditionDay3"></p></p>
+                <p>
+                    <p id="possibleConditionDay3"></p>
+                </p>
             </div>
         </div>
         <!-- BOTTOM may wanna put the previous 7 days of data -->
