@@ -122,6 +122,8 @@ function weatherForecastInLocation(days, location) {
 
             //day forecast
             //day 1
+            let day1Date = document.getElementById("day1Date");
+            day1Date.innerHTML = data.forecast.forecastday[0].date;
             let day1High = document.getElementById("day1High");
             day1High.innerHTML = `${data.forecast.forecastday[0].day.maxtemp_f}&deg;F`;
             let day1Low = document.getElementById("day1Low");
@@ -129,6 +131,8 @@ function weatherForecastInLocation(days, location) {
             let possibleConditionDay1 = document.getElementById("possibleConditionDay1");
             possibleConditionDay1.innerHTML = `${data.forecast.forecastday[0].day.condition.text}`;
             //day 2
+            let day2Date = document.getElementById("day2Date");
+            day2Date.innerHTML = data.forecast.forecastday[1].date;
             let day2High = document.getElementById("day2High");
             day2High.innerHTML = `${data.forecast.forecastday[1].day.maxtemp_f}&deg;F`;
             let day2Low = document.getElementById("day2Low");
@@ -136,6 +140,8 @@ function weatherForecastInLocation(days, location) {
             let possibleConditionDay2 = document.getElementById("possibleConditionDay2");
             possibleConditionDay2.innerHTML = `${data.forecast.forecastday[1].day.condition.text}`;
             //day 3
+            let day3Date = document.getElementById("day3Date");
+            day3Date.innerHTML = data.forecast.forecastday[2].date;
             let day3High = document.getElementById("day3High");
             day3High.innerHTML = `${data.forecast.forecastday[2].day.maxtemp_f}&deg;F`;
             let day3Low = document.getElementById("day3Low");

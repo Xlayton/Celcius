@@ -62,7 +62,8 @@ h1 {
 .currentDay {
     height: 25vh;
     width: 20vh;
-    background-color: #ccc;
+    border: solid #333;
+    border-radius: 8px;
 }
 
 /* Weather history for the last 7 days */
@@ -70,14 +71,19 @@ h1 {
 .hourly {
     height: 15vh;
     width: 10vh;
-    background-color: #aaa;
+    border: solid #aaa;
+    border-radius: 8px;
 }
 
 .hourly>h3 {
-    color: #eee;
+    color: #333;
 }
 
 #weatherIcon {
     height: 40px;
     width: auto;
+}
+
+hr{
+    border: solid #333;
 }
