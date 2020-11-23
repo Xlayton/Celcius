@@ -81,6 +81,7 @@ h1 {
 
 hr {
     border: solid #333;
+    color: #333;
 }
 
 /* News Articles */
@@ -145,8 +146,6 @@ hr {
     to {
         background-color: #29abe2
     }
-
-    color: #333;
 }
 
 #weatherIcon {
