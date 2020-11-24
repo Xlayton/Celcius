@@ -143,7 +143,7 @@ changeBackgroundColor = currentWeather => {
 
     switch (currentWeather) {
         case "Sunny":
-            document.body.style.backgroundColor = "#0487e2";
+            document.body.style.backgroundColor = "#87ceeb";
             break;
         case "Clear":
             document.body.style.backgroundColor = "#d9f0fd";
