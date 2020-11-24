@@ -14,6 +14,7 @@ function weatherInLocation(location) {
             console.log(data);
             let currentWeatherType = document.getElementById("currentWeatherType");
             currentWeatherType.innerText = data.current.condition.text;
+            changeBackgroundColor(data.current.condition.text);
         })
         .catch(function () {
             console.log("Error: I don't know what happened");
@@ -135,6 +136,69 @@ function weatherForecastInLocation(days, location) {
         .catch(function () {
             console.log("Error: I don't know what happened");
         });
+}
+
+changeBackgroundColor = currentWeather => {
+    console.log(currentWeather);
+
+    switch (currentWeather) {
+        case "Sunny":
+            document.body.style.backgroundColor = "#0487e2";
+            break;
+        case "Clear":
+            document.body.style.backgroundColor = "#d9f0fd";
+            break;
+        case "Partly cloudy":
+            document.body.style.backgroundColor = "#b1d5ee";
+            break;
+        case "Cloudy":
+            document.body.style.backgroundColor = "#ecfbfa";
+            break;
+        case "Overcast":
+            document.body.style.backgroundColor = "#b3c0c8";
+            break;
+        case "Mist":
+            document.body.style.backgroundColor = "#e9e9e7";
+            break;
+        case "Fog":
+            document.body.style.backgroundColor = "#d3d4d5";
+            break;
+        case "Light rain":
+            document.body.style.backgroundColor = "#c5e2f7";
+            break;
+        case "Moderate rain":
+            document.body.style.backgroundColor = "#92bad2";
+            break;
+        case "Heavy rain":
+            document.body.style.backgroundColor = "#53789e";
+            break;
+        case "Patchy rain possible":
+            document.body.style.backgroundColor = "#abbebf";
+            break;
+        case "Patchy light drizzle":
+            document.body.style.backgroundColor = "#abbebf";
+            break;
+        case "Light snow":
+            document.body.style.backgroundColor = "#fcfdfd";
+            break;
+        case "Moderate snow":
+            document.body.style.backgroundColor = "#e8ecf1";
+            break;
+        case "Heavy snow":
+            document.body.style.backgroundColor = "#dcdde0";
+            break;
+        case "Patchy snow possible":
+            document.body.style.backgroundColor = "#fcfdfd";
+            break;
+        case "Blowing snow":
+            document.body.style.backgroundColor = "#e1edf3";
+            break;
+        case "Blizzard":
+            document.body.style.backgroundColor = "#c2d3df";
+            break;
+        default:
+            break;
+    }
 }
 
 updateZipCode = () => {
